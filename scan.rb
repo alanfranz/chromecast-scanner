@@ -137,9 +137,9 @@ def chromecast_found?(ip_address, opts = {})
     ip_address, 8008,
     { :read_timeout => $read_timeout, :open_timeout => $open_timeout }
   )
-  res = http.get('/apps', { 'Accepts' => 'application/xml', 'Content-Type' => 'application/xml' })
+  res = http.get('/setup/eureka_info', { 'Accepts' => 'application/json', 'Content-Type' => 'application/json' })
   case res.code.to_i
-  when 302
+  when 200
     return true
   else
     return false
